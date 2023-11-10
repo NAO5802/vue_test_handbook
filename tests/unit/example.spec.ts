@@ -3,6 +3,7 @@ import HelloWorld from "@/components/HelloWorld.vue";
 import Parent from "@/components/Parent.vue";
 import SubmitButton from "@/components/SubmitButton.vue";
 import NumberRenderer from "@/components/NumberRenderer.vue";
+import FormSubmitter from "@/components/FormSubmitter.vue";
 
 describe("HelloWorld.vue", () => {
     it("renders props.msg when passed", () => {
@@ -20,8 +21,8 @@ describe("examples", () => {
         const shallowWrapper = shallowMount(Parent)
         const mountWrapper = mount(Parent)
 
-        console.log(shallowWrapper.html())
-        console.log(mountWrapper.html())
+        // console.log(shallowWrapper.html())
+        // console.log(mountWrapper.html())
     })
 })
 
@@ -75,5 +76,16 @@ describe('computed', () => {
 
         // @ts-ignore
         // expect(NumberRenderer.computed?.numbers.call(localThis)).toBe('1,3,5,7,9')
+    })
+})
+
+describe('methods', () => {
+    it('フォームを送信するとお知らせを表示する', async () => {
+        const wrapper = shallowMount(FormSubmitter)
+
+        await wrapper.find("[data-username]").setValue("alice")
+        await wrapper.find("form").trigger("submit.prevent")
+
+        expect(wrapper.find(".message").text()).toBe("aliceさん、お問い合わせ、ありがとうございます。")
     })
 })
