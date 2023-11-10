@@ -1,6 +1,5 @@
-import {mount, shallowMount} from "@vue/test-utils";
+import {shallowMount} from "@vue/test-utils";
 import HelloWorld from "@/components/HelloWorld.vue";
-import Parent from "@/components/Parent.vue";
 import SubmitButton from "@/components/SubmitButton.vue";
 import NumberRenderer from "@/components/NumberRenderer.vue";
 import FormSubmitter from "@/components/FormSubmitter.vue";
