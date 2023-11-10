@@ -4,6 +4,7 @@ import Parent from "@/components/Parent.vue";
 import SubmitButton from "@/components/SubmitButton.vue";
 import NumberRenderer from "@/components/NumberRenderer.vue";
 import FormSubmitter from "@/components/FormSubmitter.vue";
+import Emitter from "@/components/Emitter.vue";
 
 describe("HelloWorld.vue", () => {
     it("renders props.msg when passed", () => {
@@ -18,8 +19,8 @@ describe("HelloWorld.vue", () => {
 describe("examples", () => {
 
     it('render component', () => {
-        const shallowWrapper = shallowMount(Parent)
-        const mountWrapper = mount(Parent)
+        // const shallowWrapper = shallowMount(Parent)
+        // const mountWrapper = mount(Parent)
 
         // console.log(shallowWrapper.html())
         // console.log(mountWrapper.html())
@@ -87,5 +88,27 @@ describe('methods', () => {
         await wrapper.find("form").trigger("submit.prevent")
 
         expect(wrapper.find(".message").text()).toBe("aliceさん、お問い合わせ、ありがとうございます。")
+    })
+})
+
+describe('emit', () => {
+    it('２つの引数があるイベントを発火する', async () => {
+        const wrapper = shallowMount(Emitter)
+        wrapper.vm.emitEvent()
+        wrapper.vm.emitEvent()
+
+        expect(wrapper.emitted().myEvent[0]).toEqual([ 'name', 'password' ])
+    })
+
+    it('コンポーネントをレンダーせずにイベントを検証する', async () => {
+        const events = {}
+
+        // @ts-ignore
+        const $emit = (event, ...args) => { events[event] = [...args]}
+
+        Emitter.methods?.emitEvent.call({$emit})
+
+        // @ts-ignore
+        expect(events.myEvent).toEqual([ 'name', 'password' ])
     })
 })
