@@ -53,7 +53,7 @@ describe('props', () => {
 
 describe('computed', () => {
     it('偶数をレンダー', () => {
-        const wrapper = shallowMount(NumberRenderer,{
+        const wrapper = shallowMount(NumberRenderer, {
             propsData: {
                 even: true
             }
@@ -61,4 +61,19 @@ describe('computed', () => {
 
         expect(wrapper.text()).toBe('2,4,6,8')
     });
+
+    it('奇数をレンダー', () => {
+        const wrapper = shallowMount(NumberRenderer, {
+            propsData: {
+                even: false
+            }
+        })
+
+        expect(wrapper.vm.numbers).toBe('1,3,5,7,9')
+
+        // const localThis = {even: false}
+
+        // @ts-ignore
+        // expect(NumberRenderer.computed?.numbers.call(localThis)).toBe('1,3,5,7,9')
+    })
 })
