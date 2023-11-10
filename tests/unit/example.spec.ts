@@ -2,6 +2,7 @@ import {mount, shallowMount} from "@vue/test-utils";
 import HelloWorld from "@/components/HelloWorld.vue";
 import Parent from "@/components/Parent.vue";
 import SubmitButton from "@/components/SubmitButton.vue";
+import NumberRenderer from "@/components/NumberRenderer.vue";
 
 describe("HelloWorld.vue", () => {
     it("renders props.msg when passed", () => {
@@ -47,5 +48,17 @@ describe('props', () => {
 
         expect(wrapper.find('span').text()).toBe('管理者権限を実行する')
         expect(wrapper.find('button').text()).toBe('送信する')
+    });
+})
+
+describe('computed', () => {
+    it('偶数をレンダー', () => {
+        const wrapper = shallowMount(NumberRenderer,{
+            propsData: {
+                even: true
+            }
+        })
+
+        expect(wrapper.text()).toBe('2,4,6,8')
     });
 })
