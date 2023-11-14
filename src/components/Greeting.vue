@@ -1,22 +1,20 @@
 <script lang="ts">
-import {defineComponent} from 'vue'
+import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "Greeting",
-  data(){
+  data() {
     return {
-      greeting: "Vue and TDD"
-    }
-  }
-})
+      greeting: "Vue and TDD",
+    };
+  },
+});
 </script>
 
 <template>
-<div>
-  {{ greeting }}
-</div>
+  <div>
+    {{ greeting }}
+  </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

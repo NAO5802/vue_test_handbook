@@ -1,19 +1,19 @@
 <script lang="ts">
-import {defineComponent} from 'vue'
+import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "SubmitButton",
   props: {
     msg: {
       type: String,
-      required: true
+      required: true,
     },
     isAdmin: {
       type: Boolean,
-      default: false
-    }
-  }
-})
+      default: false,
+    },
+  },
+});
 </script>
 
 <template>
@@ -26,6 +26,4 @@ export default defineComponent({
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

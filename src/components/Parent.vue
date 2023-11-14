@@ -1,17 +1,15 @@
 <script lang="ts">
-import {defineComponent} from 'vue'
+import { defineComponent } from "vue";
 import Child from "@/components/Child.vue";
 
 export default defineComponent({
   name: "Parent",
-  components: {Child}
-})
+  components: { Child },
+});
 </script>
 
 <template>
   <div><Child /></div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
