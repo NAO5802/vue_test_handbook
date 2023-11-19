@@ -1,4 +1,4 @@
-import mutations from "@/store/user/mutations";
+import { mutations } from "@/store/user/mutations";
 import { actions } from "@/store/user/actions";
 
 describe("mutation test", () => {
@@ -18,6 +18,7 @@ describe("mutation test", () => {
   });
 });
 
+// FIXME: jestがaxiosをESMとして読み込めるようにする
 describe("actions test", () => {
   it("authenticated a user", async () => {
     // axios mock
@@ -45,6 +46,3 @@ describe("actions test", () => {
   });
 });
 
-// TODO
-// Jestだけの設定がおかしいのか、ソール自体が悪いのか切り分ける
-// export default と export const の違い調べる
