@@ -100,7 +100,7 @@ describe("emit", () => {
   });
 
   it("コンポーネントをレンダーせずにイベントを検証する", async () => {
-    const events = {};
+    const events: any = {};
 
     // @ts-ignore
     const $emit = (event, ...args) => {
